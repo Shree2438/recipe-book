@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Recipe Book</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-mark">🍽️</div>
+        <div class="brand-text">
+          <h1>My Recipe Book</h1>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <input id="searchInput" type="search" placeholder="Search recipes or ingredients..." />
+        <select id="categoryFilter">
+          <option value="all">All categories</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Dessert">Dessert</option>
+          <option value="Snack">Snack</option>
+        </select>
+
+        <button id="favoritesBtn" title="View favorites">❤️ Favorites</button>
+        <button id="addRecipeBtn" class="primary">+ Add Recipe</button>
+
+        <button id="darkToggle" class="icon-btn" title="Toggle dark mode">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="hero">
+      <h2>Find delicious recipes</h2>
+      <p>Search by name or ingredient. Add your own recipes and save favorites.</p>
+    </section>
+
+    <section id="recipesSection" class="recipes-grid" aria-live="polite">
+      <!-- Cards will be injected here by JavaScript -->
+    </section>
+
+    <p id="emptyHint" class="empty-hint">No recipes yet. Click “+ Add Recipe” to create your first recipe.</p>
+  </main>
+
+  <!-- Add Recipe Modal -->
+  <div id="addModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn" id="closeAddModal">✕</button>
+      <h3>Add New Recipe</h3>
+      <form id="recipeForm">
+        <label>Recipe name
+          <input name="title" required />
+        </label>
+
+        <label>Category
+          <select name="category" required>
+            <option value="">Select category</option>
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+            <option>Dessert</option>
+            <option>Snack</option>
+          </select>
+        </label>
+
+        <label>Ingredients (one per line)
+          <textarea name="ingredients" rows="4" placeholder="e.g. 2 eggs&#10;1 cup milk" required></textarea>
+        </label>
+
+        <label>Steps (one per line)
+          <textarea name="steps" rows="6" placeholder="Step 1&#10;Step 2" required></textarea>
+        </label>
+
+        <label>Image (optional)
+          <input type="file" name="image" accept="image/*" />
+        </label>
+
+        <div class="form-actions">
+          <button type="submit" class="primary">Save Recipe</button>
+          <button type="button" id="cancelAdd">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- View Recipe Modal -->
+  <div id="viewModal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-btn" id="closeViewModal">✕</button>
+      <div id="viewContent"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
